@@ -35,7 +35,7 @@
     {
       "file": "src/spa-app/router.js",
       "description": "## Implement Web Sign-In <router.js> (1/2)\nThis file contains the code that is responsible for navigating between the various views of the SPA application. At the top of it, you will see import statements for three views Home, Expenses, and Error404. The import for the Navbar component is special in that it is shared among the three views.  \n\nNext is a simple map between client-side routes and the views they correspond to. Followed by two constants that reference the DOM elements that the navbar and content should be rendered.  \n\nFinally, a router function is defined to render the views based on the hash value of the browser window.  \n\nNext, we'll implement the authentication callback as the first step of the router logic.  \n\nClick Insert Code to add the callback handler below:\n\n``` jsx\nif (new URLSearchParams(window.location.search).has(\"code\")) {\n    await window.auth0Client.handleRedirectCallback();\n    window.history.replaceState({}, document.title, \"/\");\n}\n```\n\n\nThis logic checks the querystring of the current URL for an authorization code. This code can be used to identify if the request in question refers to a user coming back from the authentication process ( i.e. if this is a user being redirected back to the application by Auth0 after authenticating). If present, it calls the handleRedirectCallback function of the Auth0 client. Upon success, the URL is updated to remove the authorization code and the function continues processing.  \n\nIn the event that the user is authenticated, we want to get the user’s profile so that it can be rendered instead of the default anonymous profile.  \n\nProceed when you're ready! ",
-      "line": 15,
+      "line": 18,
       "selection": {
         "start": {
           "line": 15,
@@ -50,7 +50,7 @@
     {
       "file": "src/spa-app/router.js",
       "description": "## Implement Web Sign-In <router.js> (2/2)\nNext, we'll add code that uses the Auth0 client to check the authentication status of the current session, fetch the user's profile, and attach it to the window instances.\n\n``` jsx\nif (await window.auth0Client.isAuthenticated()) {\n    window.user = await window.auth0Client.getUser();\n}\n```\n\nProceed when you're ready!",
-      "line": 20,
+      "line": 22,
       "selection": {
         "start": {
           "line": 20,
